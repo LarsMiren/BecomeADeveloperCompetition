@@ -13,22 +13,15 @@ public class MathOperations {
 
     public void setList(ArrayList<Long> list) {
         this.list = list;
+        list.sort(Long::compare);
     }
 
     public long getMax(){
-        long maxVal = list.get(0);
-        for (int i = 1; i < list.size(); i++) {
-            if( maxVal < list.get(i)) maxVal = list.get(i);
-        }
-        return maxVal;
+        return list.get(list.size()-1);
     }
 
     public long getMin(){
-        long minVal = list.get(0);
-        for (int i = 1; i < list.size(); i++) {
-            if( minVal > list.get(i)) minVal = list.get(i);
-        }
-        return minVal;
+        return list.get(0);
     }
 
     public double getAverage(){
@@ -40,7 +33,6 @@ public class MathOperations {
     }
 
     public double getMedian(){
-        list.sort(Long::compare);
         if( list.size() % 2 == 0 ) return getMedianForEven();
         else return getMedianForOdd();
     }
